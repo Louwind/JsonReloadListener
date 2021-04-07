@@ -22,6 +22,8 @@ dependencies {
 
 	// Fabric API
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	// Jitpack IO
+	implementation 'com.github.jitpack:gradle-simple:1.0'
 }
 
 processResources {
@@ -46,8 +48,16 @@ java {
 }
 
 jar {
-	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}"}
+	from("LICENSE")
+}
+
+allprojects {
+	repositories {
+		jcenter()
+
+		maven {
+			url "https://jitpack.io"
+		}
 	}
 }
 
@@ -60,17 +70,6 @@ publishing {
 			}
 			artifact(sourcesJar) {
 				builtBy remapSourcesJar
-			}
-		}
-	}
-
-	repositories {
-		maven {
-			name = "GitHubPackages"
-			url = uri("https://maven.pkg.github.com/Louwind/Reload")
-			credentials {
-				username = System.getenv("GITHUB_ACTOR")
-				password = System.getenv("GITHUB_TOKEN")
 			}
 		}
 	}
