@@ -15,19 +15,21 @@ public class ColorMapReloadListener implements SimpleResourceReloadListener<int[
 
     protected final ColorMap colorMap;
     protected final Identifier id;
+    protected final Identifier texture;
 
-    public ColorMapReloadListener(String id, ColorMap colorMap) {
+    public ColorMapReloadListener(String id, String texture, ColorMap colorMap) {
         this.colorMap = colorMap;
         this.id = Identifier.tryParse(id);
+        this.texture = Identifier.tryParse(texture);
     }
 
     @Override
     public CompletableFuture<int[]> load(ResourceManager resourceManager, Profiler profiler, Executor executor) {
 
         try {
-            return CompletableFuture.completedFuture(RawTextureDataLoader.loadRawTextureData(resourceManager, this.id));
+            return CompletableFuture.completedFuture(RawTextureDataLoader.loadRawTextureData(resourceManager, this.texture));
         } catch (IOException e) {
-            throw new IllegalStateException("Failed to load Color Map texture: " + this.id, e);
+            throw new IllegalStateException("Failed to load Color Map texture: " + this.texture, e);
         }
 
     }
