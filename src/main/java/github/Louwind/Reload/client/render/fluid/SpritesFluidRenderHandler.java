@@ -9,12 +9,18 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockRenderView;
 import org.jetbrains.annotations.Nullable;
 
-public class ColoredFluidRenderHandler implements FluidRenderHandler {
+public class SpritesFluidRenderHandler implements FluidRenderHandler {
+
+    public static final FluidColorProvider NONE = (view, pos, state) -> -1;
 
     protected final FluidColorProvider colorProvider;
     protected final SpriteLoader spriteLoader;
 
-    public ColoredFluidRenderHandler(FluidColorProvider colorProvider, SpriteLoader spriteLoader) {
+    public SpritesFluidRenderHandler(SpriteLoader spriteLoader) {
+        this(NONE, spriteLoader);
+    }
+
+    public SpritesFluidRenderHandler(FluidColorProvider colorProvider, SpriteLoader spriteLoader) {
         this.colorProvider = colorProvider;
         this.spriteLoader = spriteLoader;
     }
