@@ -6,6 +6,8 @@ import net.fabricmc.api.Environment;
 @Environment(EnvType.CLIENT)
 public interface ColorMap {
 
+    int getDefaultColor();
+
     void setColorMap(int[] pixels);
 
 }
