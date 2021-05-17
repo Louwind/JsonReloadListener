@@ -1,4 +1,4 @@
-package github.Louwind.Reload.client.resource;
+package github.Louwind.Reload.client.resource.sprite;
 
 import github.Louwind.Reload.client.texture.SpriteLoader;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
@@ -15,9 +15,9 @@ public class SpritesReloadListener implements SimpleSynchronousResourceReloadLis
     protected final Identifier id;
     protected final SpriteLoader sprites;
 
-    public SpritesReloadListener(String id, String atlas, SpriteLoader sprites) {
-        this.atlas = Identifier.tryParse(atlas);
+    public SpritesReloadListener(String id, Identifier atlas, SpriteLoader sprites) {
         this.id = Identifier.tryParse(id);
+        this.atlas = atlas;
         this.sprites = sprites;
     }
 

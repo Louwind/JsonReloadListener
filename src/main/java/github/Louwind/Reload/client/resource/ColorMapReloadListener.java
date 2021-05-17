@@ -17,10 +17,10 @@ public class ColorMapReloadListener implements SimpleResourceReloadListener<int[
     protected final Identifier id;
     protected final Identifier texture;
 
-    public ColorMapReloadListener(String id, String texture, ColorMap colorMap) {
-        this.colorMap = colorMap;
+    public ColorMapReloadListener(String id, Identifier texture, ColorMap colorMap) {
         this.id = Identifier.tryParse(id);
-        this.texture = Identifier.tryParse(texture);
+        this.colorMap = colorMap;
+        this.texture = texture;
     }
 
     @Override
