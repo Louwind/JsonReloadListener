@@ -22,7 +22,7 @@ public class SpritesReloadListener implements SimpleSynchronousResourceReloadLis
     }
 
     @Override
-    public void apply(ResourceManager manager) {
+    public void reload(ResourceManager manager) {
         Function<Identifier, Sprite> atlas = MinecraftClient.getInstance().getSpriteAtlas(this.atlas);
 
         this.sprites.load(atlas);

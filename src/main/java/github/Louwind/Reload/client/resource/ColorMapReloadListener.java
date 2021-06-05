@@ -24,6 +24,11 @@ public class ColorMapReloadListener implements SimpleResourceReloadListener<int[
     }
 
     @Override
+    public CompletableFuture<Void> apply(int[] ints, ResourceManager resourceManager, Profiler profiler, Executor executor) {
+        return CompletableFuture.runAsync(() -> this.colorMap.setColorMap(ints));
+    }
+
+    @Override
     public CompletableFuture<int[]> load(ResourceManager resourceManager, Profiler profiler, Executor executor) {
 
         try {
@@ -32,11 +37,6 @@ public class ColorMapReloadListener implements SimpleResourceReloadListener<int[
             throw new IllegalStateException("Failed to load Color Map texture: " + this.texture, e);
         }
 
-    }
-
-    @Override
-    public CompletableFuture<Void> apply(int[] ints, ResourceManager resourceManager, Profiler profiler, Executor executor) {
-        return CompletableFuture.runAsync(() -> this.colorMap.setColorMap(ints));
     }
 
     @Override
