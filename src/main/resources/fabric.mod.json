@@ -19,6 +19,7 @@
     ]
   },
   "mixins": [
+    "reload.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.11.3",
