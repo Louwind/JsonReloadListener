@@ -10,6 +10,10 @@ public class ClientWorldEvents {
 
     public static final Event<ColorCacheLoad> COLOR_CACHE_LOAD = EventFactory.createArrayBacked(ColorCacheLoad.class, callbacks -> colorCache -> {
 
+        for (ColorCacheLoad callback : callbacks) {
+            callback.onLoad(colorCache);
+        }
+
     });
 
     @FunctionalInterface
