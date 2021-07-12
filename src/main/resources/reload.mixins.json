@@ -4,9 +4,11 @@
   "package": "github.Louwind.Reload.core.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "AccessorClientWorld",
     "AccessorDynamicRegistryManager"
   ],
   "client": [
+    "MixinClientPlayNetworkHandler"
   ],
   "injectors": {
     "defaultRequire": 1
