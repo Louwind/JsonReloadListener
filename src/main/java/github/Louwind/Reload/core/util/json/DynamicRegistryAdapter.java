@@ -19,7 +19,7 @@ public abstract class DynamicRegistryAdapter<T> implements JsonDeserializer<T>, 
     public T deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         var resourceManager = MinecraftClient.getInstance().getResourceManager();
         var registryManager = AccessorDynamicRegistryManager.getRegistryManager();
-        var registryOps = RegistryOps.method_36574(JsonOps.INSTANCE, resourceManager, registryManager);
+        var registryOps = RegistryOps.ofLoaded(JsonOps.INSTANCE, resourceManager, registryManager);
 
         return this.fromJson(registryOps, json, typeOfT, context);
     }
