@@ -6,20 +6,21 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.client.world.BiomeColorCache;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.world.level.ColorResolver;
 
 @Environment(EnvType.CLIENT)
 @FunctionalInterface
 public interface ColorCacheLoad {
 
-    Event<ColorCacheLoad> EVENT = EventFactory.createArrayBacked(ColorCacheLoad.class, callbacks -> colorCache -> {
+    Event<ColorCacheLoad> EVENT = EventFactory.createArrayBacked(ColorCacheLoad.class, callbacks -> (world, colorCache) -> {
 
         for (ColorCacheLoad callback : callbacks) {
-            callback.onLoad(colorCache);
+            callback.onLoad(world, colorCache);
         }
 
     });
 
-    void onLoad(Object2ObjectArrayMap<ColorResolver, BiomeColorCache> colorCache);
+    void onLoad(ClientWorld world, Object2ObjectArrayMap<ColorResolver, BiomeColorCache> colorCache);
 
 }

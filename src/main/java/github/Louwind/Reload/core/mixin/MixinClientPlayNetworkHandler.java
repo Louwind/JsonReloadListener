@@ -24,7 +24,7 @@ public class MixinClientPlayNetworkHandler {
     private void onGameJoin(GameJoinS2CPacket packet, CallbackInfo ci) {
 
         if (this.world != null)
-            ColorCacheLoad.EVENT.invoker().onLoad(((AccessorClientWorld) this.world).getColorCache());
+            ColorCacheLoad.EVENT.invoker().onLoad(this.world, ((AccessorClientWorld) this.world).getColorCache());
 
     }
 
@@ -32,7 +32,7 @@ public class MixinClientPlayNetworkHandler {
     private void onPlayerRespawn(PlayerRespawnS2CPacket packet, CallbackInfo ci) {
 
         if (this.world != null)
-            ColorCacheLoad.EVENT.invoker().onLoad(((AccessorClientWorld) this.world).getColorCache());
+            ColorCacheLoad.EVENT.invoker().onLoad(this.world, ((AccessorClientWorld) this.world).getColorCache());
 
     }
 
