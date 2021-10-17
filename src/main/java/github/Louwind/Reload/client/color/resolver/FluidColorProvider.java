@@ -10,6 +10,8 @@ import org.jetbrains.annotations.Nullable;
 @Environment(EnvType.CLIENT)
 public interface FluidColorProvider {
 
+    FluidColorProvider NONE = (view, pos, state) -> -1;
+
     int getColor(@Nullable BlockRenderView view, @Nullable BlockPos pos, FluidState state);
 
 }
